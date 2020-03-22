@@ -1,6 +1,8 @@
 #! /usr/bin/python3
 
 from random import randrange
+import matplotlib.pyplot as plt
+
 
 n_pl = 4 # How many players do we have
 # Init and name the players
@@ -125,7 +127,16 @@ loosers = []
 for i in range (1000):
   loosers.append(play())
 
-
+names_s= []
+scores = []
 for pl in players:
-    print(pl.name + " hat " + str(loosers.count(pl.name)) + " mal verloren")
+    names_s.append(pl.name)
+    score = loosers.count(pl.name)
+    scores.append(score)
+    print(pl.name + " hat " + str(score) + " mal verloren")
 
+plt.bar(range(n_pl) , scores , align='center',alpha=0.5)
+plt.xticks(range(n_pl), names_s)
+plt.ylabel('# lost')
+
+plt.savefig('plot.pdf')
