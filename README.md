@@ -1,3 +1,5 @@
+# Sechzehn
+
 Sammlung an Simulationen und Rechnungen mit dem Siel verschieden Strategien im Spiel "Sechzehn" zu vergleichen.
 
 Um das die "Simulation" zu starten reicht
