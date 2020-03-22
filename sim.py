@@ -143,4 +143,4 @@ for pl in players:
 plt.bar(range(n_pl) , scores , align='center',alpha=0.5)
 plt.xticks(range(n_pl), names_s)
 plt.ylabel('# lost')
-plt.savefig('plot.pdf')
+plt.savefig('plot.png')
