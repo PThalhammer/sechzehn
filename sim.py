@@ -36,6 +36,8 @@ def cont_stat(num):
         count+= throw_dice()
     return count
 
+# A bunch of helper functions:
+
 def max_marks():
     high = 0
     for pl in players:
@@ -66,6 +68,7 @@ def reset():
         pl.eyes = 0
         pl.marks = 0 
 
+# see who lost, anounce and return the name
 def punish_loser():
     for pl in players:
         if pl.eyes >= 16 or pl.marks >= 3: 
@@ -79,13 +82,11 @@ def throw_dice():
 
 players.append(player(test_strat,cont_stat,"Ulf")) # The chosen one
 
-for i in range(n_pl-1):
+for i in range(n_pl-1):  # The others
     players.append(player(rand_strat,cont_stat,names[i]))
 
 
-# Main loop for one Round of playing 
-
-
+# Main function for one game
 def play():
 
     c1 = 1
@@ -115,28 +116,31 @@ def play():
 
         if max_marks() >= 3: 
             loser = punish_loser()  
-            reset()                   # Does anyone reach three marks
+            reset()                                     # Does anyone reach three marks
             break
         c1 += 1 
     return loser
 
 
 
-p=0
-loosers = []
+p=0 # Switch off printing
+
+#Play the games 1000 times
+losers = []
 for i in range (1000):
-  loosers.append(play())
+  losers.append(play())
 
 names_s= []
 scores = []
 for pl in players:
     names_s.append(pl.name)
-    score = loosers.count(pl.name)
+    score = losers.count(pl.name)
     scores.append(score)
     print(pl.name + " hat " + str(score) + " mal verloren")
 
+
+# Plot results
 plt.bar(range(n_pl) , scores , align='center',alpha=0.5)
 plt.xticks(range(n_pl), names_s)
 plt.ylabel('# lost')
-
 plt.savefig('plot.pdf')
