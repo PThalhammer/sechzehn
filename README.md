@@ -6,3 +6,7 @@ python3 sim.py
 ```
 Innerhalb des Codes können verschieden Spielstrategien definiert werden, die dann gegeneinander antreten können.
 Am Schluss wird ein Balken-Diagramm geplottet, welches zeigt wer die erfolgreichste Strategie hatte.
+Dann schaut dann in etwas so aus: 
+
+![ergebnis plot](plot.png)
+
